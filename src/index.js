@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import { Provider } from 'react-redux';
-import store from './Store/store'
-
-
+import store from './Store/store';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'react-fontawesome'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

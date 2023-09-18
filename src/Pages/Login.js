@@ -1,7 +1,7 @@
 
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { loginUser } from "../Store/userSlice"
+import { loginUser } from "../Reducer/loginSlice"
 import { useNavigate } from "react-router-dom"
 
 
@@ -9,10 +9,10 @@ import { useNavigate } from "react-router-dom"
 export const Login = () => {
     const [username, setEmail]= useState('') 
     const [password, setPassword]= useState('')
-const {loading, error}=useSelector((state)=>state.user)
+    const {loading, error}=useSelector((state)=>state.login)
 
     const dispatch =useDispatch()
-    const navigate =useNavigate
+    const navigate =useNavigate()
     const handleLogin=(e)=>{
         e.preventDefault();
         let userData={
@@ -20,16 +20,15 @@ const {loading, error}=useSelector((state)=>state.user)
     }
   dispatch(loginUser(userData)).then((result)=>{
     console.log(result)
-    debugger
-    if(result.payload){
+    if(result.type==='login/loginUser/fulfilled'){
         setEmail('');
         setPassword('');
-        navigate('/');
+        navigate('/manage')
     }
   }) 
 }
   return (
-    <section className="vh-100" style={{backgroundColor: '#9A616D'}}>
+<section className="vh-100" style={{backgroundColor: '#9A616D'}}>
   <div className="container py-5 h-100">
     <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col col-xl-10">
