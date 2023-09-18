@@ -5,7 +5,7 @@ import axios from "axios";
 export const loginUser = createAsyncThunk(
     'login/loginUser',
     async(userData)=>{
-        const request= await axios.post(`https://snsaccount.cxengine.net/api/Authenticate/login`, userData)
+        const request= await axios.post(`Your API`, userData)
         console.log(request)
         const response = await request.data
         localStorage.setItem('Userdata', JSON.stringify(response))
